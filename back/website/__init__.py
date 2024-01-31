@@ -1,3 +1,8 @@
+import atexit
+import json
+import logging.config
+import logging.handlers
+import pathlib
 from os import getenv
 from flask import Flask, render_template
 from authlib.integrations.flask_client import OAuth
@@ -28,6 +33,22 @@ oauth.register(
     client_kwargs={"scope": "openid profile email"},
 )
 
+# logger = logging.getLogger(__name__)
+
+
+# def setup_loggin():
+#     config_file = pathlib.Path("logging_configs/config.json")
+
+#     with open(config_file) as file:
+#         config = json.load(file)
+
+#     logging.config.dictConfig(config)
+
+#     queue_handler = logging.getHandlerByName("queue_handler")
+#     if queue_handler is not None:
+#         queue_handler.listener.start()
+#         atexit.register(queue_handler.listener.stop)
+
 
 def create_app():
     """
@@ -38,6 +59,8 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = app_config.get("DB_URI")
 
     db.init_app(app)
+
+    # setup_loggin()
 
     from .routers.views_route import views
     from .routers.auth_route import auth
