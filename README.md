@@ -21,7 +21,7 @@ Ensure you have [python](https://www.python.org/) installed and access to a data
 - requests
 - Gunicorn
 
-See `back/requirements.txt` for full list of dependenciess
+See `src/requirements.txt` for full list of dependenciess
 
 ### Installing
 
@@ -35,12 +35,12 @@ On your terminal run the following command to clone the repository
 git clone https://github.com/kimfom01/quicknotes.git
 ```
 
-#### Step 2: Go to back directory
+#### Step 2: Go to src directory
 
-Navigate to the `back` directory
+Navigate to the `src` directory
 
 ```sh
-cd back/
+cd src/
 ```
 
 #### Step 3: Install required packages
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 #### Step 4: Create .env
 
-The project depends on some config that it expects to be provided from a .env file at the `back` directory.  
+The project depends on some config that it expects to be provided from a .env file at the `src` directory.  
 Here is the structure of the file
 
 ```env
@@ -73,7 +73,7 @@ flask db upgrade
 
 ### Executing program
 
-Within the `back` directory
+Within the `src` directory
 
 ```sh
 python main.py
