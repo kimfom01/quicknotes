@@ -7,4 +7,4 @@ app = create_app()
 oauth.init_app(app)
 
 if __name__ == "__main__":
-    app.run(port=app_config.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=app_config.get("PORT", 5000))
