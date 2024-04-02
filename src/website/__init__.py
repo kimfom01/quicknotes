@@ -1,5 +1,6 @@
 from os import getenv
 from flask import Flask, render_template
+from werkzeug.middleware.proxy_fix import ProxyFix
 from authlib.integrations.flask_client import OAuth
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -35,6 +36,7 @@ def create_app():
     Initialize app
     """
     app = Flask(__name__)
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1)
     app.config["SECRET_KEY"] = app_config.get("FLASK_SECRET")
     app.config["SQLALCHEMY_DATABASE_URI"] = app_config.get("DB_URI")
 
